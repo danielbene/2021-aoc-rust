@@ -1,20 +1,9 @@
-use std::{
-    fs,
-    time::Instant,
-    io::BufReader,
-    io::BufRead
-};
+use aoc_util;
 
 fn main() {
-    let mut lines_vec = load_from_file("input.txt");
-
-    let start = Instant::now();
-    let solution = solve(&mut lines_vec);
-    let runtime = Instant::now() - start;
-
-    let output = format!("Solution: {}\nRuntime: {}ms ({} microsec)\n",
-        solution, runtime.as_millis(), runtime.as_micros());
-    fs::write("solution.txt", output).expect("Unable to write file");
+    let mut init_tuple = aoc_util::init();
+    let solution = solve(&mut init_tuple.0);
+    aoc_util::end(solution as isize, init_tuple.1);
 }
 
 fn solve(input: &mut Vec<String>) -> i32 {
@@ -33,17 +22,8 @@ fn solve(input: &mut Vec<String>) -> i32 {
     return coords.0 as i32 * coords.1 as i32;
 }
 
-fn load_from_file(file_path: &str) -> Vec<String> {
-    let file = fs::File::open(file_path).expect("Something went wrong reading the file");
-    let reader = BufReader::new(file);
-
-    reader.lines()
-        .map(|line| line.unwrap().parse::<String>().unwrap())
-        .collect()
-}
-
 #[test]
 fn tests() {
-    let mut vec: Vec<String> = load_from_file("test.txt");
+    let mut vec: Vec<String> = aoc_util::load_from_file("test.txt");
     assert!(solve(&mut vec) == 150);
 }
