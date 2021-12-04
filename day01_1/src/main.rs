@@ -1,26 +1,16 @@
-use std::{
-    fs,
-    time::Instant
-};
+use aoc_util;
 
 fn main() {
-    let contents = fs::read_to_string("input.txt")
-        .expect("Something went wrong reading the file");
-
-    let start = Instant::now();
-    let solution = solve(&contents);
-    let runtime = Instant::now() - start;
-
-    let output = format!("Solution: {}\nRuntime: {}ms ({} microsecs)",
-        solution, runtime.as_millis(), runtime.as_micros());
-    fs::write("solution.txt", output).expect("Unable to write file");
+    let mut init_tuple = aoc_util::init();
+    let solution = solve(&mut init_tuple.0);
+    aoc_util::end(solution as isize, init_tuple.1);
 }
 
-fn solve(input: &str) -> i16 {
+fn solve(input: &mut Vec<String>) -> i16 {
     let mut counter: i16 = -1;
     let mut prev: i16 = 0;
 
-    for line in input.lines() {
+    for line in input.iter() {
         let val: i16 = line.parse().unwrap();  // line.parse::<i16>().unwrap()
         if val > prev {
             counter += 1;
@@ -34,6 +24,6 @@ fn solve(input: &str) -> i16 {
 
 #[test]
 fn tests() {
-    let test_input = "199\n200\n208\n210\n200\n207\n240\n269\n260\n263\n";
-    assert!(solve(test_input) == 7);
+    let mut vec: Vec<String> = aoc_util::load_from_file("test.txt");
+    assert!(solve(&mut vec) == 7);
 }
