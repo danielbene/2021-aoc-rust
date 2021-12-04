@@ -24,3 +24,7 @@ pub fn load_from_file(file_path: &str) -> Vec<String> {
         .map(|line| line.unwrap().parse::<String>().unwrap())
         .collect()
 }
+
+pub fn remove_whitespace(s: &str) -> String {
+    s.chars().filter(|c| !c.is_whitespace()).collect()
+}
