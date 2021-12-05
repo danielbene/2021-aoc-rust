@@ -1,5 +1,6 @@
 use aoc_util;
 
+// TODO: would be great to refact day4 later
 fn main() {
     let mut init_tuple = aoc_util::init();
     let solution = solve(&mut init_tuple.0);
