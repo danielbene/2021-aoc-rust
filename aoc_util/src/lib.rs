@@ -29,6 +29,21 @@ pub fn remove_whitespace(s: &str) -> String {
     s.chars().filter(|c| !c.is_whitespace()).collect()
 }
 
+pub fn median(numbers: &mut Vec<isize>) -> isize {
+    numbers.sort();
+    let mid = numbers.len() / 2;
+    if numbers.len() % 2 == 0 {
+        mean(&vec![numbers[mid - 1], numbers[mid]]) as isize
+    } else {
+        numbers[mid]
+    }
+}
+
+pub fn mean(numbers: &Vec<isize>) -> f64 {
+    let sum: isize = numbers.iter().sum();
+    sum as f64 / numbers.len() as f64
+}
+
 /*
 NOTES:
 - summing vector elements with conversion:
