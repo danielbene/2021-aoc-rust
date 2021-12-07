@@ -8,8 +8,8 @@ fn main() {
 
 fn solve(input: &mut Vec<String>) -> isize {
     let mut fishes: Vec<u8> = Vec::new();
-    for spit in input.get(0).unwrap().split(",") {
-        fishes.push(spit.parse().unwrap());
+    for split in input.get(0).unwrap().split(",") {
+        fishes.push(split.parse().unwrap());
     }
 
     for _ in 0..80 {
