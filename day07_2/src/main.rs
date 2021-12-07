@@ -13,8 +13,8 @@ fn solve(input: &mut Vec<String>) -> isize {
     }
 
     // rounding causes inconsistent result so using comparison to make sure
-    // (test was ok with rounding, but live input failed and vice versa)
-    let mean = aoc_util::mean(&mut crab_subs) as isize;
+    // (test was ok with rounding, but live input failed and vice versa) - don't understand why
+    let mean = aoc_util::mean(&mut crab_subs) as isize;  // "as" conversion always rounding down
     let fuel_cnt = (calc_fuel(mean, &crab_subs), calc_fuel(mean + 1, &crab_subs));
 
     if fuel_cnt.0 < fuel_cnt.1 {
