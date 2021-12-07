@@ -6,14 +6,14 @@ fn main() {
     aoc_util::end(solution as isize, init_tuple.1);
 }
 
-fn solve(input: &mut Vec<String>) -> u32{
+fn solve(input: &mut Vec<String>) -> u32 {
     let oxy_gen = u16::from_str_radix(&search_rating(input, true), 2).unwrap();
     let co2_scrub = u16::from_str_radix(&search_rating(input, false), 2).unwrap();
 
     oxy_gen as u32 * co2_scrub as u32
 }
 
-fn search_rating(input: &mut Vec<String>, is_oxy: bool) -> String{
+fn search_rating(input: &mut Vec<String>, is_oxy: bool) -> String {
     let mut vec = input.to_owned();
     for i in 0..vec.get(0).unwrap().len() {
         let mut val = 0;

@@ -6,7 +6,7 @@ fn main() {
     aoc_util::end(solution as isize, init_tuple.1);
 }
 
-fn solve(input: &mut Vec<String>) -> isize{
+fn solve(input: &mut Vec<String>) -> isize {
     let mut fishes: Vec<u8> = Vec::new();
     for spit in input.get(0).unwrap().split(",") {
         fishes.push(spit.parse().unwrap());
