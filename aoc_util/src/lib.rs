@@ -28,3 +28,9 @@ pub fn load_from_file(file_path: &str) -> Vec<String> {
 pub fn remove_whitespace(s: &str) -> String {
     s.chars().filter(|c| !c.is_whitespace()).collect()
 }
+
+/*
+NOTES:
+- summing vector elements with conversion:
+fishes.iter().map(|i| (*i) as u64).sum::<u64>()
+*/
