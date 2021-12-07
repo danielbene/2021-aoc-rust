@@ -8,7 +8,7 @@ fn main() {
     aoc_util::end(solution as isize, init_tuple.1);
 }
 
-fn solve(input: &mut Vec<String>) -> isize{
+fn solve(input: &mut Vec<String>) -> isize {
     let mut counter: u64 = 0;
     // 2darray causes stackoverflow on 1k size - use Vec, it is stored on heap...
     // let mut terrain = [[0u16; MATRIX_SIZE]; MATRIX_SIZE];

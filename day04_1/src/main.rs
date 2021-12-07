@@ -7,7 +7,7 @@ fn main() {
 }
 
 // welp, this is NOT nice
-fn solve(input: &mut Vec<String>) -> isize{
+fn solve(input: &mut Vec<String>) -> isize {
     let mut table_stats: Vec<(u8, i8, u16)> = Vec::new();
     let mut nums: Vec<u8> = Vec::new();
     for n in input.get(0).unwrap().split(",") {
