@@ -7,11 +7,11 @@ fn main() {
 }
 
 // will not update part1 because it's nice to see the runtime difference
-// between the "manual" and this counting solution
+// between the "manual" and this counting approarch
 fn solve(input: &mut Vec<String>) -> isize {
     let mut fishes = vec!(0; 7);
-    for spit in input.get(0).unwrap().split(",") {
-        fishes[spit.parse::<usize>().unwrap()] += 1;
+    for split in input.get(0).unwrap().split(",") {
+        fishes[split.parse::<usize>().unwrap()] += 1;
     }
 
     let mut newborns = (0, 0);
