@@ -25,9 +25,7 @@ pub fn load_from_file(file_path: &str) -> Vec<String> {
         .collect()
 }
 
-pub fn remove_whitespace(s: &str) -> String {
-    s.chars().filter(|c| !c.is_whitespace()).collect()
-}
+// ##### MATH UTILS #####
 
 pub fn median(numbers: &mut Vec<isize>) -> isize {
     numbers.sort();
@@ -42,6 +40,36 @@ pub fn median(numbers: &mut Vec<isize>) -> isize {
 pub fn mean(numbers: &Vec<isize>) -> f64 {
     let sum = numbers.iter().sum::<isize>();
     sum as f64 / numbers.len() as f64
+}
+
+// ##### STRING UTILS #####
+
+pub fn remove_whitespace(s: &str) -> String {
+    s.chars().filter(|c| !c.is_whitespace()).collect()
+}
+
+pub fn contains_all_chars(target: &Vec<char>, sample: Vec<char>) -> bool {
+    sample.iter().all(|item| target.contains(item))
+}
+
+pub fn count_matching_chars(target: &Vec<char>, sample: Vec<char>) -> u8 {
+    let mut cnt: u8 = 0;
+    for ch in sample.iter() {
+        if target.contains(ch) {
+            cnt += 1;
+        }
+    }
+
+    cnt
+}
+
+pub fn copy_split_to_vec(string: &str, delimeter: &str) -> Vec<String> {
+    let mut vec: Vec<String> = Vec::new();
+    for s in string.split(delimeter) {
+        vec.push(s.to_string());
+    }
+
+    vec
 }
 
 /*
