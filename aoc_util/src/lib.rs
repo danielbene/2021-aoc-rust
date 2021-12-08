@@ -48,4 +48,6 @@ pub fn mean(numbers: &Vec<isize>) -> f64 {
 NOTES:
 - summing vector elements with conversion:
 fishes.iter().map(|i| (*i) as u64).sum::<u64>()
+- convert string specified char to num
+bin.chars().nth(i as usize).unwrap().to_digit(10).unwrap() as u16;  // to_digit(RADIX)'s parameter is not totally clear
 */
