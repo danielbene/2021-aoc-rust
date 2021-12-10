@@ -78,4 +78,6 @@ NOTES:
 fishes.iter().map(|i| (*i) as u64).sum::<u64>()
 - convert string specified char to num
 bin.chars().nth(i as usize).unwrap().to_digit(10).unwrap() as u16;  // to_digit(RADIX)'s parameter is not totally clear
+- print vector, array, etc with multiple element
+println!("{:?}", incorrect_chars);
 */
