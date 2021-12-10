@@ -40,31 +40,28 @@ fn solve(input: &mut Vec<String>) -> isize {
 }
 
 // i hate this
-fn rec_search(i: usize, j: usize, cnt: &mut u32, height: usize, width: usize, terrain: &Vec<Vec<u8>>, mirror: &mut Vec<Vec<u8>>) -> u32 {
+fn rec_search(i: usize, j: usize, cnt: &mut u32, height: usize, width: usize, terrain: &Vec<Vec<u8>>, mirror: &mut Vec<Vec<u8>>) -> () {
     if terrain[i][j] == 9 || mirror[i][j] == 9 {
-        return *cnt
+        return
     }
 
     *cnt += 1;
     mirror[i][j] = 9;
-
     if i != height - 1 {
-        *cnt = rec_search(i + 1, j, cnt, height, width, terrain, mirror);
+        rec_search(i + 1, j, cnt, height, width, terrain, mirror);
     }
 
     if i != 0 {
-        *cnt = rec_search(i - 1, j, cnt, height, width, terrain, mirror);
+        rec_search(i - 1, j, cnt, height, width, terrain, mirror);
     }
 
     if j != width - 1 {
-        *cnt = rec_search(i, j + 1, cnt, height, width, terrain, mirror);
+        rec_search(i, j + 1, cnt, height, width, terrain, mirror);
     }
 
     if j != 0 {
-        *cnt = rec_search(i, j - 1, cnt, height, width, terrain, mirror);
+        rec_search(i, j - 1, cnt, height, width, terrain, mirror);
     }
-
-    *cnt
 }
 
 #[test]
