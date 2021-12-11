@@ -8,38 +8,36 @@ fn main() {
 
 fn solve(input: &mut Vec<String>) -> isize {
     let mut incomplete_lines: Vec<String> = Vec::new();
-    let mut cnt_vec: Vec<u32> = Vec::new();
+    let mut scores: Vec<usize> = Vec::new();
     for line in input.iter(){
-        get_incorrect_closers(&remove_pairs(line), &mut incomplete_lines);
+        get_incomplete_closers(&remove_pairs(line), &mut incomplete_lines);
     }
 
     for il in incomplete_lines {
-        let ml = mirror_to_closers(&il);
-
-        // TODO: calculate ml value, sort vec, return middle score
-
-
+        scores.push(score_mirrored_value(&il));
     }
 
-    0
+    scores.sort();
+    scores[scores.len()/2] as isize
 }
 
-fn mirror_to_closers(line: &str) -> String {
-    let mut mirrored = "".to_string();
+fn score_mirrored_value(line: &str) -> usize {
+    let mut score: usize = 0;
     for ch in line.chars().rev() {
+        score *= 5;
         match ch {
-            '(' => mirrored.push(')'),
-            '[' => mirrored.push(']'),
-            '{' => mirrored.push('}'),
-            '<' => mirrored.push('>'),
+            '(' => score += 1,
+            '[' => score += 2,
+            '{' => score += 3,
+            '<' => score += 4,
             _ => ()
         }
     }
 
-    mirrored
+    score
 }
 
-fn get_incorrect_closers(cleaned: &String, incomplete_lines: &mut Vec<String>) {
+fn get_incomplete_closers(cleaned: &String, incomplete_lines: &mut Vec<String>) {
     let closers = [']', ')', '}', '>'];
     let mut idx: Vec<u8> = Vec::new();
     for c in closers {

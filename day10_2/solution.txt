@@ -1,0 +1,2 @@
+Solution: 3249889609
+Runtime: 6ms (6194 microsec)
